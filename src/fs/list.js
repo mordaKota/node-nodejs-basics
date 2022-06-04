@@ -15,11 +15,11 @@ export const list = async () => {
     return true;
   }
 
-  if (!await isFolderExists('files')) {
-    console.log ("FS operation failed");
-  } else {
+  if (await isFolderExists('files')) {
     const fileNames = await readdir(path.join(__dirname, 'files'));
     console.log(fileNames);
+  } else {
+    console.log ("FS operation failed");
   }
 };
 

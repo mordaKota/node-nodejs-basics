@@ -16,10 +16,10 @@ export const remove = async () => {
     return true;
   }
 
-  if (!await isFileExists ('fileToRemove.txt')) {
-    console.log("FS operation failed")
+  if (await isFileExists ('fileToRemove.txt')) {
+    await rm(path.join(__dirname, 'files', 'fileToRemove.txt'));
   } else {
-    await rm(path.join(__dirname, 'files', 'fileToRemove.txt'))
+    console.log("FS operation failed");
   }
 };
 
